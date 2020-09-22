@@ -12,3 +12,4 @@ pip install pyaudio
 pip install googletrans pyttsx3 speechrecognition 
 
 
+Limbi suportate pentru speech recognition: http://stackoverflow.com/a/14302134
