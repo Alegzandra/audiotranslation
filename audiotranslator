@@ -1,44 +1,48 @@
 import googletrans
+from googletrans import Translator
 import pyttsx3
 import speech_recognition as sr
-print(sr.Microphone.list_microphone_names())
+
+
+#print(sr.Microphone.list_microphone_names())
 
 r = sr.Recognizer()
-mic = sr.Microphone(device_index = 2)
-#mic = sr.Microphone(device_index = None)
-#
-# with mic as source:
-#     r.adjust_for_ambient_noise(source, duration = 2)
-#     audio = r.listen(source)
-#     lista_audio = []
-#     for elem in r.recognize_google(audio, language = 'en-US', show_all = True):
-#         lista_audio.append(elem)
-#     try:
-#         print(r.recognize_google(audio, language = 'en-US', show_all = True))    # recognize speech using Google Speech Recognition
-#     except LookupError:                            # speech is unintelligible
-#         print("Could not understand audio")
+mic = sr.Microphone()
 
-#key = "AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw",
-
-
-# while True:
-#     r = sr.Recognizer()
-#     with sr.Microphone(device_index = 2) as source:
-#         print("Say Something")
-#         audio=r.listen(source)
-#         try:
-#             print(r.recognize_google(audio),"\n")
-#         except:
-#             pass
-
-#result = r.recognize_google(audio)
-#print(result) 
-
+print('Say something')
 
 with mic as source:
     r.adjust_for_ambient_noise(source)
-
     audio = r.listen(source)
 
-    result = r.recognize_google(audio, language = 'en-US', show_all = True)
-    print(result)
+    # recognize speech using Google Speech Recognition
+    result = r.recognize_google(audio, language = 'ro-RO', show_all = True)
+
+    try:
+        print(result)
+    except:                            # speech is unintelligible
+        print("Could not understand audio")
+
+
+
+p = Translator()
+k = p.translate(result, dest='french')
+translated = str(k.text)
+print(translated)
+
+# engine = pyttsx3.init()
+# engine = pyttsx3.init()
+# voices = engine.getProperty('voices')
+# for voice in voices:
+# print("Voice:")
+# print(" - ID: %s" % voice.id)
+# print(" - Name: %s" % voice.name)
+# print(" - Languages: %s" % voice.languages)
+# print(" - Gender: %s" % voice.gender)
+# print(" - Age: %s" % voice.age)
+#
+# fr_voice_id = "com.apple.speech.synthesis.voice.thomas"
+# engine.setProperty('voice', fr_voice_id)
+#
+# engine.say(translated)
+# engine.runAndWait()
