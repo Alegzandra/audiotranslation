@@ -21,7 +21,7 @@ p = Translator()
 result_values = []
 for value in result.values():
     result_values.append(value)
-values_view = valori_result[0][0].values()
+values_view = result_values[0][0].values()
 value_iterator = iter(values_view)
 text_de_tradus = next(value_iterator)
 
