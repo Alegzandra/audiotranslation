@@ -58,6 +58,5 @@ engine.setProperty('voice', 'english') #se trece explicit limba corespondenta tr
 engine.say(translated)
 
 #engine.save_to_file(translated, 'output.mp3')
-#nu merge scrierea in fisier
 
 engine.runAndWait()
